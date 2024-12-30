@@ -1,0 +1,61 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+*.bin
+*.out
+*.o
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Go build files
+bin/
+build/
+*.exe
+*.log
+*.test
+*.prof
+
+# Go modules
+/go.sum
+/go/pkg/
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Dependency directories
+vendor/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
+
+# Coverage files
+*.cover
+coverage.out
+
+# Git configuration files
+*.orig
+*.lock
+
+# Node.js files (if frontend is included)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.local
+.env.*
