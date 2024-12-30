@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/joho/godotenv"
+	// "github.com/joho/godotenv"
 )
 
 func main() {
