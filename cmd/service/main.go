@@ -14,9 +14,9 @@ import (
 
 func main() {
 	// Load environment variables from .env file (only for local development)
-	if err := godotenv.Load(); err != nil {
-        log.Fatal("Error loading .env file")
-    }
+	// if err := godotenv.Load(); err != nil {
+    //     log.Fatal("Error loading .env file")
+    // }
 	connStr, errBool := os.LookupEnv("DATABASE_URL")
 	if !errBool {
 		log.Fatal("DATABASE_URL environment variable is required")
