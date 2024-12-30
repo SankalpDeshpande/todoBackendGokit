@@ -21,7 +21,6 @@ build/
 *.prof
 
 # Go modules
-/go.sum
 /go/pkg/
 
 # Editor directories and files
