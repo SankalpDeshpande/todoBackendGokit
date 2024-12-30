@@ -34,9 +34,9 @@ func NewTodoService(db *sql.DB) TodoService {
 
 func (s *todoService) Create(ctx context.Context, todo Todo) (string, error) {
 	validStatuses := map[string]bool{
-		"pending":    true,
+		"pending":     true,
 		"in-progress": true,
-		"completed":  true,
+		"completed":   true,
 	}
 
 	if !validStatuses[todo.Status] {
@@ -122,4 +122,3 @@ func (s *todoService) Delete(ctx context.Context, id string) error {
 	}
 	return nil
 }
-

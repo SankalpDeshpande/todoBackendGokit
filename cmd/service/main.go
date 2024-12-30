@@ -15,8 +15,8 @@ import (
 func main() {
 	// Load environment variables from .env file (only for local development)
 	// if err := godotenv.Load(); err != nil {
-    //     log.Fatal("Error loading .env file")
-    // }
+	//     log.Fatal("Error loading .env file")
+	// }
 	connStr, errBool := os.LookupEnv("DATABASE_URL")
 	if !errBool {
 		log.Fatal("DATABASE_URL environment variable is required")
@@ -38,9 +38,9 @@ func main() {
 		log.Fatalf("Could not connect to database: %v", err)
 	}
 
-    svc := service.NewTodoService(db)
-	endpoints  := endpoint.MakeEndpoints(svc)
-	handler :=transport.NewHTTPHandler(endpoints)
+	svc := service.NewTodoService(db)
+	endpoints := endpoint.MakeEndpoints(svc)
+	handler := transport.NewHTTPHandler(endpoints)
 	log.Println("Backend service running at :", port)
-    http.ListenAndServe(":"+ port, handler)
+	http.ListenAndServe(":"+port, handler)
 }
