@@ -43,7 +43,7 @@ func (s *todoService) Create(ctx context.Context, todo Todo) (string, error) {
 		return "", fmt.Errorf("invalid status: %s", todo.Status)
 	}
 	todo.ID = uuid.New().String()
-	query := `INSERT INTO tasks (id, title, status) VALUES ($1, $2, $3)`
+	query := `INSERT INTO todos (id, title, status) VALUES ($1, $2, $3)`
 	_, err := s.db.ExecContext(ctx, query, todo.ID, todo.Title, todo.Status)
 	if err != nil {
 		log.Printf("Error creating TODO: %v", err)
@@ -53,7 +53,7 @@ func (s *todoService) Create(ctx context.Context, todo Todo) (string, error) {
 }
 
 func (s *todoService) Get(ctx context.Context, id string) (Todo, error) {
-	query := `SELECT id, title, status FROM tasks WHERE id = $1`
+	query := `SELECT id, title, status FROM todos WHERE id = $1`
 	var todo Todo
 	err := s.db.QueryRowContext(ctx, query, id).Scan(&todo.ID, &todo.Title, &todo.Status)
 	if err != nil {
@@ -66,7 +66,7 @@ func (s *todoService) Get(ctx context.Context, id string) (Todo, error) {
 	return todo, nil
 }
 func (s *todoService) GetAll(ctx context.Context) ([]Todo, error) {
-	rows, err := s.db.Query("SELECT id, title, status FROM tasks")
+	rows, err := s.db.Query("SELECT id, title, status FROM todos")
 	if err != nil {
 		return []Todo{}, err
 	}
@@ -88,7 +88,7 @@ func (s *todoService) GetAll(ctx context.Context) ([]Todo, error) {
 	return tasks, nil
 }
 func (s *todoService) Update(ctx context.Context, todo Todo) error {
-	query := `UPDATE tasks SET title = $1, status = $2 WHERE id = $3`
+	query := `UPDATE todos SET title = $1, status = $2 WHERE id = $3`
 	result, err := s.db.ExecContext(ctx, query, todo.Title, todo.Status, todo.ID)
 	if err != nil {
 		log.Printf("Error updating TODO: %v", err)
@@ -106,7 +106,7 @@ func (s *todoService) Update(ctx context.Context, todo Todo) error {
 }
 
 func (s *todoService) Delete(ctx context.Context, id string) error {
-	query := `DELETE FROM tasks WHERE id = $1`
+	query := `DELETE FROM todos WHERE id = $1`
 	result, err := s.db.ExecContext(ctx, query, id)
 	if err != nil {
 		log.Printf("Error deleting TODO: %v", err)
