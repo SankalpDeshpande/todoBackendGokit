@@ -22,3 +22,9 @@ Body - {"id":"e24c1fde-98f4-4858-bba8-5f51fed62823","title":"leran golang","stat
 
 DELETE - 
 https://todobackendgokit.onrender.com/tasks/delete/id
+
+Packages used - 
+1. kit - github.com/go-kit/kit - Go kit is a programming toolkit for building microservices
+2. uuid - github.com/google/uuid - generates and inspects UUIDs
+3. godotenv - github.com/joho/godotenv - loads env vars from a .env file
+4. pq - github.com/lib/pq - A pure Go postgres driver for Go's database/sql package
